@@ -1,9 +1,35 @@
 .todoContainer {
+  // border: 3px solid red;
   display: flex;
-  justify-content: space-evenly;
-  width: 90%;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 95%;
   flex-wrap: wrap;
+  margin-top: 10px;
+  .activeClassContainer,
+  .completedClassContainer {
+    display: flex;
+    width: 47.5%;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: var(--activeTaskBg);
+
+    padding: 15px;
+    .todos_heading {
+      font-size: 30px;
+      color: var(--white);
+      padding: 5px 15px 15px 15px;
+    }
+    @media (max-width: 700px) {
+      width: 95%;
+      flex-direction: column;
+    }
+  }
   @media (max-width: 700px) {
     width: 95%;
   }
+}
+
+.remove {
+  background-color: var(--completedTaskBg) !important;
 }

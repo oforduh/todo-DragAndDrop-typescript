@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { DragDropContext } from 'react-beautiful-dnd'
 import styles from "./app.module.scss"
 import InputField from './components/inputField/InputField'
 import TodoList from './components/todoList/TodoList'
 import { TodoInterface } from './interface/TodoInterface'
 
 
-
-
 const App:React.FC = () => {
   const [todo,setTodo]=useState<string>("")
   const [todos,setTodos]=useState<TodoInterface[]>([])
   const [todoWatch,setTodoWatch]=useState<boolean>(false)
+  const [completedTodo,setCompletedTodo]=useState<TodoInterface[]>([])
 
 
 //get the array from local storage
@@ -46,14 +46,19 @@ useEffect(() => {
       }
       }
   return (
+
+    <DragDropContext onDragEnd={()=>{}}>
+
+
     <div className={styles.appContainer}>
       <span className={styles.heading}>
         TYPESCRIPT REACT TASKIFY
       </span>
       <InputField todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo}/>
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} completedTodo={completedTodo} setCompletedTodo={setCompletedTodo}/>
    
     </div>
+    </DragDropContext>
   )
 }
 

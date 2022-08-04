@@ -2,25 +2,57 @@ import React from 'react'
 import styles from "./todolist.module.scss"
 import { TodoInterface } from '../../interface/TodoInterface'
 import SingleTodo from '../singleTodo/SingleTodo'
+import { Droppable } from 'react-beautiful-dnd'
 
 interface TodoListProps{
     todos:TodoInterface[]
     setTodos:React.Dispatch<React.SetStateAction<TodoInterface[]>>
+    completedTodo:TodoInterface[]
+    setCompletedTodo:React.Dispatch<React.SetStateAction<TodoInterface[]>>
 }
 
 const TodoList:React.FC<TodoListProps> = ({todos,setTodos}:TodoListProps) => {
 
   return (
-    <div className={styles.todoContainer}>
- <div className={styles.activeClassContainer}>
-<span className={styles.todos_heading}
->
-  Active Tasks
-</span>
+ <div className={styles.todoContainer}>
+  <Droppable droppableId='TodoList'>
+    {(provided)=>(
+      <div className={styles.activeClassContainer} ref={provided.innerRef} {...provided.droppableProps}>
+         <span className={styles.todos_heading}>
+        Active Tasks
+        </span>
+       {todos.map((item)=>
+       <SingleTodo item={item}
+       setTodos={setTodos}
+       todos={todos}
+      />
+    )}
+    </div>
+
+   )}
 
 
- </div>
- <div className={`${styles.completedClassContainer} ${styles.remove}`}></div>
+  </Droppable>
+  <Droppable droppableId='TodoRemove'>
+    {(provided)=>(
+
+  <div className={`${styles.completedClassContainer} ${styles.remove}`}  ref={provided.innerRef} {...provided.droppableProps}>
+  <span className={styles.todos_heading}>
+  completed Tasks
+    </span>
+    {todos.map((item)=>
+    <SingleTodo item={item}
+    setTodos={setTodos}
+    todos={todos}
+  />
+    )}
+
+  </div>
+
+    )}
+
+
+  </Droppable>
     </div>
   )
 }

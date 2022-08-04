@@ -6,7 +6,10 @@ code {
 :root {
   --primary: #2f74c0 ;
   --white:#ffffff;
-  --buttonHover:#388ae2
+  --buttonHover:#388ae2;
+  --activeTaskBg: rgba(50, 195, 205);
+  --completedTaskBg: rgba(235,103,80);
+
 
 }
 
