@@ -95,7 +95,7 @@ useEffect(() => {
 
     <div className={styles.appContainer}>
       <span className={styles.heading}>
-        TYPESCRIPT REACT TASKIFY
+        TYPESCRIPT DRAG AND DROP TASKIFY
       </span>
       <InputField todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo}/>
       <TodoList todos={todos} setTodos={setTodos} completedTodo={completedTodo} setCompletedTodo={setCompletedTodo}/>
