@@ -33,3 +33,10 @@
 .remove {
   background-color: var(--completedTaskBg) !important;
 }
+
+.d  ragActiveCss {
+  background-color: var(--dragActiveBg) !important;
+}
+.dragCompleteCss {
+  background-color: var(--dragCompleteBg) !important;
+}

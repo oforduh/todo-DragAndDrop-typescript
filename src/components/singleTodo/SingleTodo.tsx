@@ -60,8 +60,8 @@ const SingleTodo:React.FC<SingleTodoProps> = ({item,todos,setTodos,index}:Single
   return (
 
     <Draggable draggableId={item.id.toString()} index={index}>
-        {(provided)=>(
-               <form key={item.id} className={styles.single_todo_form} onSubmit={(e)=>{
+        {(provided,snapshot)=>(
+               <form key={item.id} className={`${styles.single_todo_form} ${snapshot.isDragging?styles.dragItemCss:""}`} onSubmit={(e)=>{
                 e.preventDefault()
                 handleEdit(item.id)
             }}

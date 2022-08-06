@@ -9,6 +9,9 @@ code {
   --buttonHover:#388ae2;
   --activeTaskBg: rgba(50, 195, 205);
   --completedTaskBg: rgba(235,103,80);
+  --dragActiveBg:rgb(0,221,236);
+  --dragCompleteBg:rgb(255,38,0);
+
 
 
 }
